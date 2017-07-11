@@ -108,5 +108,18 @@ for (let i = 0; i < formData.length; i++) {
   input.setAttribute("id", formData[i].id);
   // input.setAttribute("icon", formData[i].icon);
 
-  fields.appendChild(input);
-}
+
+  let dropdown = document.createElement("select");
+
+  for (let x = 0; x < formData.length; x++) {
+    if (formData[x].options > 0); {
+
+      dropdown.setAttribute("option", formData[x].options.value)
+
+      fields.appendChild(dropdown);
+  }
+
+      fields.appendChild(input);
+
+    }
+  }
