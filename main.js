@@ -101,25 +101,28 @@ let formData = [
 
 let fields = document.querySelector("#fields");
 for (let i = 0; i < formData.length; i++) {
-
   let input = document.createElement("input");
+  
   input.setAttribute("placeholder", formData[i].label);
   input.setAttribute("type", formData[i].type);
   input.setAttribute("id", formData[i].id);
-  // input.setAttribute("icon", formData[i].icon);
+  input.setAttribute("fa-", formData[i].icon);
 
+  fields.appendChild(input);
 
-  let dropdown = document.createElement("select");
+  if (formData[i].options.length > 0) {
+    let dropDown = document.createElement("select");
+    for (let x = 0; x < formData[i].options.length; x++) {
+      let dropDownSelect = document.createElement("option");
 
-  for (let x = 0; x < formData.length; x++) {
-    if (formData[x].options > 0); {
-
-      dropdown.setAttribute("option", formData[x].options.value)
-
-      fields.appendChild(dropdown);
-  }
-
-      fields.appendChild(input);
-
+      dropDownSelect.setAttribute("value", formData[i].options[x].value);
+      dropDownSelect.innerHTML = formData[i].options[x].label;
+      dropDown.appendChild(dropDownSelect);
+      fields.appendChild(dropDown);
     }
   }
+  if (i === 5) {
+    let textBox = document.createElement("input");
+    input.style.height = "90px";
+  }
+}
