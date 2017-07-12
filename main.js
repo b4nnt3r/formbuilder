@@ -102,7 +102,7 @@ let formData = [
 let fields = document.querySelector("#fields");
 for (let i = 0; i < formData.length; i++) {
   let input = document.createElement("input");
-  
+
   input.setAttribute("placeholder", formData[i].label);
   input.setAttribute("type", formData[i].type);
   input.setAttribute("id", formData[i].id);
@@ -113,16 +113,17 @@ for (let i = 0; i < formData.length; i++) {
   if (formData[i].options.length > 0) {
     let dropDown = document.createElement("select");
     for (let x = 0; x < formData[i].options.length; x++) {
-      let dropDownSelect = document.createElement("option");
+      let dropDown2 = document.createElement("option");
 
-      dropDownSelect.setAttribute("value", formData[i].options[x].value);
-      dropDownSelect.innerHTML = formData[i].options[x].label;
-      dropDown.appendChild(dropDownSelect);
+      dropDown2.setAttribute("value", formData[i].options[x].value);
+      dropDown2.innerHTML = formData[i].options[x].label;
+      dropDown.appendChild(dropDown2);
       fields.appendChild(dropDown);
     }
   }
   if (i === 5) {
     let textBox = document.createElement("input");
-    input.style.height = "90px";
+    input.style.cols = "900px";
+    input.style.wordWrap = "soft";
   }
 }
