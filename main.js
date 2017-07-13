@@ -95,23 +95,34 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
-// let second = formData[1];
-// console.log(second);
-// console.log(second.label);
 
 let fields = document.querySelector("#fields");
 for (let i = 0; i < formData.length; i++) {
   let input = document.createElement("input");
 
-  input.setAttribute("placeholder", formData[i].label);
-  input.setAttribute("type", formData[i].type);
-  input.setAttribute("id", formData[i].id);
-  input.setAttribute("fa-", formData[i].icon);
+  if (formData[i].label != "Select Language") {
+    if (formData[i].type != "textarea") {
 
-  fields.appendChild(input);
+      input.setAttribute("placeholder", formData[i].label);
+      input.setAttribute("type", formData[i].type);
+      input.setAttribute("id", formData[i].id);
+      input.setAttribute("fa-", formData[i].icon);
+
+      fields.appendChild(input);
+    }
+  }
 
   if (formData[i].options.length > 0) {
     let dropDown = document.createElement("select");
+
+    let option1 = `${formData[i].label}`
+    let dropDown3 = document.createElement("option");
+    dropDown3.setAttribute("selected", "true");
+    dropDown3.setAttribute("disabled", "disabled");
+    dropDown3.innerHTML = `${option1}`;
+
+    dropDown.appendChild(dropDown3);
+
     for (let x = 0; x < formData[i].options.length; x++) {
       let dropDown2 = document.createElement("option");
 
@@ -120,10 +131,16 @@ for (let i = 0; i < formData.length; i++) {
       dropDown.appendChild(dropDown2);
       fields.appendChild(dropDown);
     }
+
   }
-  if (i === 5) {
-    let textBox = document.createElement("input");
-    input.style.cols = "900px";
-    input.style.wordWrap = "soft";
+
+  if (formData[i].type === "textarea") {
+    let textBox = document.createElement("textarea");
+    // textBox.setAttribute("rows", 50);
+    // textBox.setAttribute("cols", 25);
+    textBox.setAttribute("placeholder", `${formData[i].label}`);
+    fields.appendChild(textBox);
+
   }
 }
+console.log(fields);
